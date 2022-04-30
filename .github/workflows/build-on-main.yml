@@ -24,9 +24,9 @@ jobs:
       run: |
         set MSYSTEM=MINGW64
         set HOME=${{ github.workspace }}
-        set CFLAGS=-flto
-        set CXXFLAGS=%CFLAGS%
-        set LDFLAGS=-static -static-libgcc -static-libstdc++ -flto -s
+        rem set CFLAGS=-flto
+        rem set CXXFLAGS=%CFLAGS%
+        set LDFLAGS=-static -static-libgcc -static-libstdc++ -s
         git clone https://github.com/ultravideo/uvg266
         for /f "delims=" %%i in ('git -C uvg266 log -1 --format^="%%h"') do set "shorthash=%%i"
         for /f "delims=" %%i in ('git -C uvg266 rev-list --count HEAD') do set "revision=%%i"
