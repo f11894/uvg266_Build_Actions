@@ -24,7 +24,7 @@ jobs:
       run: |
         set MSYSTEM=MINGW64
         set HOME=${{ github.workspace }}
-        set CFLAGS=-flto -v
+        set CFLAGS=-flto
         set CXXFLAGS=%CFLAGS%
         set LDFLAGS=-static -static-libgcc -static-libstdc++ -flto -s
         git clone https://github.com/ultravideo/uvg266
