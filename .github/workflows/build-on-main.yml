@@ -34,8 +34,8 @@ jobs:
         C:\msys64\usr\bin\bash -lc "cd uvg266 && mkdir gcc_cmake && cd gcc_cmake && cmake .. -G Ninja -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release"
         C:\msys64\usr\bin\bash -lc "cd uvg266/gcc_cmake && ninja"
         copy /y uvg266\gcc_cmake\*.exe .\
-        copy /y uvg266\LICENSE.txt LICENSE.txt
-        7z a "uvg266_r%revision%-%shorthash%.7z" *.exe LICENSE.txt
+        copy /y uvg266\LICENSE LICENSE
+        7z a "uvg266_r%revision%-%shorthash%.7z" *.exe LICENSE
     - name: Upload result
       uses: actions/upload-artifact@v2
       with:
