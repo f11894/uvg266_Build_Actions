@@ -24,14 +24,14 @@ jobs:
       run: |
         set MSYSTEM=MINGW64
         set HOME=${{ github.workspace }}
-        rem set CFLAGS=-flto
-        rem set CXXFLAGS=%CFLAGS%
-        set LDFLAGS=-static -static-libgcc -static-libstdc++ -s
+        set CFLAGS=-flto
+        set CXXFLAGS=%CFLAGS%
+        set LDFLAGS=-static -static-libgcc -static-libstdc++ -flto -s
         git clone https://github.com/ultravideo/uvg266
         for /f "delims=" %%i in ('git -C uvg266 log -1 --format^="%%h"') do set "shorthash=%%i"
         for /f "delims=" %%i in ('git -C uvg266 rev-list --count HEAD') do set "revision=%%i"
         echo shorthash %shorthash%
-        C:\msys64\usr\bin\bash -lc "cd uvg266 && mkdir gcc_cmake && cd gcc_cmake && cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release"
+        C:\msys64\usr\bin\bash -lc "cd uvg266 && mkdir gcc_cmake && cd gcc_cmake && cmake .. -G Ninja -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release"
         C:\msys64\usr\bin\bash -lc "cd uvg266/gcc_cmake && ninja"
         copy /y uvg266\gcc_cmake\*.exe .\
         copy /y uvg266\LICENSE.txt LICENSE.txt
