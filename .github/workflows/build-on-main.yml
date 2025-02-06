@@ -54,7 +54,7 @@ jobs:
         copy /y uvg266\LICENSE LICENSE
         7z a "uvg266_r%revision%-%shorthash%.7z" *.exe LICENSE
     - name: Upload result
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: uvg266
         path: |
@@ -68,7 +68,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: uvg266
         path: artifacts
